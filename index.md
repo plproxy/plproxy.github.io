@@ -6,8 +6,8 @@ layout: simple
 # Introduction
 
 PL/Proxy is a PostgreSQL procedural language (PL) handler
-that allows to create functions that do remote function calls
-to another possibly sharded PostgreSQL database.
+that allows to do remote procedure calls between PostgreSQL databases,
+with optional sharding.
 
 ## History
 
@@ -29,9 +29,9 @@ Current release:
 
 Old releases can be downloaded from pgfoundry [archive](https://ftp.postgresql.org/pub/projects/pgFoundry/plproxy/plproxy/).
 
-## Community
+## Support
 
-* [Project page](https://github.com/plproxy/plproxy) at Github.
 * [Issue tracker](https://github.com/plproxy/plproxy/issues) at Github.
-* [Downloads](https://github.com/plproxy/plproxy/releases) at Github.
+* [Project page](https://github.com/plproxy/plproxy) at Github.
+* [Chat room](https://gitter.im/plproxy/plproxy) at Gitter.
 
