@@ -20,6 +20,15 @@ PL that handles sharding and generic pooler process
 ([PgBouncer](https://pgbouncer.github.io)) that is able to handle large amount
 of standard PostgreSQL connections that the PL makes.
 
+## Download
+
+Current release:
+
+* [plproxy-2.6.tar.gz](/downloads/files/2.6/plproxy-2.6.tar.gz) (78743 bytes,
+  [sha256](/downloads/files/2.6/plproxy-2.6.tar.gz.sha256))
+
+Old releases can be downloaded from pgfoundry [archive](https://ftp.postgresql.org/pub/projects/pgFoundry/plproxy/plproxy/).
+
 ## Community
 
 * [Project page](https://github.com/plproxy/plproxy) at Github.

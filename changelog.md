@@ -5,7 +5,7 @@ title: PL/Proxy Changelog
 
 # PL/Proxy Changelog
 
-**2015-08-xx  -  PlProxy 2.6  -  ""**
+**2015-08-26  -  PlProxy 2.6  -  "Released via Bottle Mail"**
 
 - Features
 

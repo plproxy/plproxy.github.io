@@ -229,5 +229,5 @@ for that.
 ## More resources
 
 Kristo Kaiv has his own take on tutorial here:
-[http://kaiv.wordpress.com/category/plproxy]()
+[https://kaiv.wordpress.com/category/plproxy]()
 
