@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{ page.title }}</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="{{ site.baseurl }}/css/normalize.css">
+<link rel="stylesheet" href="{{ site.baseurl }}/css/writ.css">
+<link rel="alternate" type="application/atom+xml" title="News feed" href="{{ site.baseurl }}/feed.xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<header>
+  <h1>PL/Proxy</h1>
+  <p>Function-based sharding for PostgreSQL</p>
+  <nav>
+    <ul>
+      <li><a href=".">Home</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="config.html">Config</a></li>
+      <li><a href="syntax.html">Syntax</a></li>
+      <li><a href="tutorial.html">Tutorial</a></li>
+      <li><a href="changelog.html">Changelog</a></li>
+    </ul>
+  </nav>
+</header>
+
+<article>
+{{ content }}
+</article>
+
+</body>
+</html>
