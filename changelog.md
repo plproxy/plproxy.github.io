@@ -5,7 +5,7 @@ title: PL/Proxy Changelog
 
 # PL/Proxy Changelog
 
-**2015-08-26  -  PlProxy 2.6  -  "Released via Bottle Mail"**
+**2015-08-26  -  PL/Proxy 2.6  -  "Released via Bottle Mail"**
 
 - Features
 
@@ -32,7 +32,7 @@ title: PL/Proxy Changelog
 
   * Debian packaging cleanup.
 
-**2012-11-27  -  PlProxy 2.5  -  "With Extra Leg For Additional Stability"**
+**2012-11-27  -  PL/Proxy 2.5  -  "With Extra Leg For Additional Stability"**
 
 - Features
 
@@ -56,7 +56,7 @@ title: PL/Proxy Changelog
 
   * Fix crash when `RETURNS TABLE` syntax is used.
 
-**2012-05-07  -  PlProxy 2.4  -  "Light Eater"**
+**2012-05-07  -  PL/Proxy 2.4  -  "Light Eater"**
 
 - Features
 
@@ -73,7 +73,7 @@ title: PL/Proxy Changelog
   * Support Postgres 9.2.
 
 
-**2011-10-25  -  PlProxy 2.3  -  "Unmanned Crowd Control"**
+**2011-10-25  -  PL/Proxy 2.3  -  "Unmanned Crowd Control"**
 
 - Features
 
@@ -92,7 +92,7 @@ title: PL/Proxy Changelog
 
   * Use Asciidoc ListingBlock for code - results in nicer HTML.
 
-**2011-02-18  -  PlProxy 2.2  -  "Cover With Milk To See Secret Message"**
+**2011-02-18  -  PL/Proxy 2.2  -  "Cover With Milk To See Secret Message"**
 
 - Features
 
@@ -119,7 +119,7 @@ title: PL/Proxy Changelog
     Old compat assument bitmap representation for fd_set,
     but win32 uses array.
 
-**2010-04-23  -  PlProxy 2.1  -  "Quality Horrorshow"**
+**2010-04-23  -  PL/Proxy 2.1  -  "Quality Horrorshow"**
 
 - Features
 
@@ -156,7 +156,7 @@ title: PL/Proxy Changelog
   * deb: per-version packaging: `make debXY` will create
     `postgresql-plproxy-X.Y` package.
 
-**2009-10-28  -  PlProxy 2.0.9  -  "Five-Nines Guarantee For Not Bricking The Server"**
+**2009-10-28  -  PL/Proxy 2.0.9  -  "Five-Nines Guarantee For Not Bricking The Server"**
 
 - Features
 
@@ -192,7 +192,7 @@ title: PL/Proxy Changelog
 
   * geterrcode(): Switch memory context to work around Assert() in CopyErrorData().
 
-**2009-01-16  -  PlProxy 2.0.8  -  "Simple Multi-Tentacle Arhitecture"**
+**2009-01-16  -  PL/Proxy 2.0.8  -  "Simple Multi-Tentacle Arhitecture"**
 
 - Features
 
@@ -213,7 +213,7 @@ title: PL/Proxy Changelog
 
     Reported and analyzed by Jonah Harris.
 
-**2008-09-29  -  PlProxy 2.0.7  -  "The Ninja of Shadow"**
+**2008-09-29  -  PL/Proxy 2.0.7  -  "The Ninja of Shadow"**
 
 - Fixes
 
@@ -250,7 +250,7 @@ title: PL/Proxy Changelog
   * deb: Survive empty FLEX/BISON defs from PGXS.
     Accept also postgresql-server-dev-8.3 as build dep.
 
-**2008-09-05  -  PlProxy 2.0.6  -  "Agile Voodoo"**
+**2008-09-05  -  PL/Proxy 2.0.6  -  "Agile Voodoo"**
 
 - Features
 
@@ -282,7 +282,7 @@ title: PL/Proxy Changelog
   * Make regtest tolerant to random() implementation differneces
     between different OSes.
 
-**2008-06-06  -  PlProxy 2.0.5  -  "Universal Shredder"**
+**2008-06-06  -  PL/Proxy 2.0.5  -  "Universal Shredder"**
 
 - Fixes:
 
@@ -294,7 +294,7 @@ title: PL/Proxy Changelog
     functions easier easier.
   * Make compat poll() function behave more like actual poll().
 
-**2008-01-04  -  PlProxy 2.0.4  -  "Vampire-proof"**
+**2008-01-04  -  PL/Proxy 2.0.4  -  "Vampire-proof"**
 
 - Fixes
 
@@ -310,57 +310,71 @@ title: PL/Proxy Changelog
     to avoid problems when local and remote Postgres have
     different setting for integer_datetimes.
 
-**2007-12-10  -  PlProxy 2.0.3  -  "Faster Than A Fresh Zombie"**
+**2007-12-10  -  PL/Proxy 2.0.3  -  "Faster Than A Fresh Zombie"**
 
 - Features
 
-    * Explicitly specify result column names and types in query.
+  * Explicitly specify result column names and types in query.
 
-      Lets say there is function somefunc(out id int4, out data text).
-      Previously pl/proxy issued following query:
+    Lets say there is function somefunc(out id int4, out data text).
+    Previously pl/proxy issued following query:
 
-          SELECT * FROM somefunc()
-      
-      And later tried to work out which column goes where.  Now it issues:
+        SELECT * FROM somefunc()
 
-          SELECT id::int4, data::text FROM somefunc()
+    And later tried to work out which column goes where.  Now it issues:
 
-      For functions without named return paramenters, eg. just "RETURNS text":
+        SELECT id::int4, data::text FROM somefunc()
 
-          SELECT r::text FROM anotherfunc() r
+    For functions without named return paramenters, eg. just "RETURNS text":
 
-      This gives better type safety when using binary I/O, allows signatures
-      differ in deterministic ways and creates safe upgrade path for signatures.
+        SELECT r::text FROM anotherfunc() r
 
-      Only downside is that existing functions with wildly different signatures
-      stop working, but as they work on pure luck anyway, I'm not worried.
+    This gives better type safety when using binary I/O, allows signatures
+    differ in deterministic ways and creates safe upgrade path for signatures.
 
-    * Quote function and result column names properly.
+    Only downside is that existing functions with wildly different signatures
+    stop working, but as they work on pure luck anyway, I'm not worried.
 
-    * Set `client_encoding` on remote database to be equal to local one.
+  * Quote function and result column names properly.
 
-    * Tutorial by Steve Singer.
+  * Set `client_encoding` on remote database to be equal to local one.
+
+  * Tutorial by Steve Singer.
 
 - Fixes
 
-    * Support 8.3 (handle short varlena header)
+  * Support 8.3 (handle short varlena header)
 
-    * Support old flex (2.5.4)  Previously flex >= 2.5.33 was required.
+  * Support old flex (2.5.4)  Previously flex >= 2.5.33 was required.
 
-    * Fix `make deb`, include actual debian/changelog.
+  * Fix `make deb`, include actual debian/changelog.
 
-    * Remove config paramenter `statement_timeout`.
-    
-      It was ignored previously and it cannot be made work in live env
-      when working thru pgbouncer, so its better to drop it completely.
-      The setting can be always set via normal ways.
-      
+  * Remove config paramenter `statement_timeout`.
 
-**2007-04-16  -  PlProxy 2.0.2  -  "No news is good news?"**
+    It was ignored previously and it cannot be made work in live env
+    when working thru pgbouncer, so its better to drop it completely.
+    The setting can be always set via normal ways.
+
+**2007-04-16  -  PL/Proxy 2.0.2  -  "No news is good news?"**
 
 - Cleanups
 
-    * Include plproxy.sql.in in tgz.
-    * Clean `add_connection()` function by using StringInfo instead
-      open-coded string shuffling.
+  * Include plproxy.sql.in in tgz.
+
+  * Clean `add_connection()` function by using StringInfo instead
+    open-coded string shuffling.
+
+**2007-03-30  -  PL/Proxy 2.0.1 - "PL/Proxy 2.0.1"**
+
+- Fixes
+
+  * Support for 8.3
+
+  * Seems v2.0 invalidated cache more than intended. Fix.
+
+**2007-03-13  -  PL/Proxy 2.0 - "Skype Presents"**
+
+- Initial
+  [public release](http://www.postgresql.org/message-id/54335.194.126.108.9.1173801315.squirrel@mail.skype.net)
+  of v2.0 rewrite.
 
