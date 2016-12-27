@@ -4,6 +4,10 @@ all: doc
 clean:
 	rm -rf _site
 
+
+init:
+	bundle install --path .gems
+
 serve:
 	bundle exec jekyll serve
 
