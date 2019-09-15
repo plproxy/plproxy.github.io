@@ -24,10 +24,13 @@ of standard PostgreSQL connections that the PL makes.
 
 Current release:
 
-* [plproxy-2.8.tar.gz](/downloads/files/2.8/plproxy-2.8.tar.gz) (79698 bytes,
-  [sha256](/downloads/files/2.8/plproxy-2.8.tar.gz.sha256))
+* [plproxy-2.9.tar.gz](/downloads/files/2.9/plproxy-2.9.tar.gz) (75558 bytes,
+  [sha256](/downloads/files/2.9/plproxy-2.9.tar.gz.sha256))
 
 Previous releases:
+
+* [plproxy-2.8.tar.gz](/downloads/files/2.8/plproxy-2.8.tar.gz) (79698 bytes,
+  [sha256](/downloads/files/2.8/plproxy-2.8.tar.gz.sha256))
 
 * [plproxy-2.7.tar.gz](/downloads/files/2.7/plproxy-2.7.tar.gz) (79053 bytes,
   [sha256](/downloads/files/2.7/plproxy-2.7.tar.gz.sha256))
