@@ -22,7 +22,7 @@ to be defined, either by the cluster configuration API or SQL/MED.
 
 The following plproxy schema functions are used to define the clusters:
 
-### plproxy.get_cluster_version(cluster_name)
+### plproxy.get\_cluster\_version(cluster\_name)
 
     plproxy.get_cluster_version(cluster_name text)
     returns integer
@@ -47,7 +47,7 @@ external source such as a configuration table.
     $$ LANGUAGE plpgsql;
 
 
-### plproxy.get_cluster_partitions(cluster_name)
+### plproxy.get\_cluster\_partitions(cluster\_name)
 
     plproxy.get_cluster_partitions(cluster_name text)
     returns setof text
@@ -55,7 +55,8 @@ external source such as a configuration table.
 This is called when a new partition configuration needs to be loaded. 
 It should return connect strings to the partitions in the cluster.
 The connstrings should be returned in the correct order.  The total
-number of connstrings returned must be a power of 2.  If two or more
+number of connstrings returned must be a power of 2 unless `modular_mapping`
+is used.  If two or more
 connstrings are equal then they will use the same connection.
 
 If the string `user=` does not appear in a connect string then
@@ -99,7 +100,7 @@ An example function without the use of separate configuration tables:
     END;
     $$ LANGUAGE plpgsql;
 
-### plproxy.get_cluster_config(cluster)
+### plproxy.get\_cluster\_config(cluster)
  
     plproxy.get_cluster_config(
             IN cluster_name text,
@@ -112,6 +113,21 @@ consist of any of the following configuration parameters.  All of them are
 optional. Timeouts/lifetime values are given in seconds.  If the value is 0
 or NULL then the parameter is disabled (a default value will be used).
 
+
+* `modular_mapping`
+
+  Switches from bitmasking to modulus for mapping hash to partition number.
+
+  By default mapping happens via bitmasking via '&' operator.  PL/Proxy
+  requires the number of partitions to be power of two, then does:
+
+  ```index = (hash & (part_count - 1))```
+
+  When `modular_mapping` is set to 1,
+  PL/Proxy instead allows any number of partitions and maps hash partition
+  via modulus operator '%'.  Exact expression is:
+
+  ```index = abs(hash % part_count)```
 
 * `connection_lifetime`
 
@@ -186,7 +202,6 @@ your cluster definitions.
 
 Note: the validation function is known to be broken in PostgreSQL 8.4.2 and
 below.
-
 
     CREATE FOREIGN DATA WRAPPER plproxy
             [ VALIDATOR plproxy_fdw_validator ]
